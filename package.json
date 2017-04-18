@@ -8,5 +8,7 @@
   },
   "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "pinyin-utils": "git+https://git@github.com/pepebecker/pinyin-utils.git"
+  }
 }
