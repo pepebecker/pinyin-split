@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "mocha -w"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/pepebecker/pinyin-split#readme",
   "dependencies": {
     "pinyin-utils": "git+https://git@github.com/pepebecker/pinyin-utils.git"
+  },
+  "devDependencies": {
+    "mocha": "^3.3.0",
+    "should": "^11.2.1"
   }
 }
