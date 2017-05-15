@@ -1,7 +1,7 @@
 {
   "name": "pinyin-split",
   "version": "1.0.0",
-  "description": "",
+  "description": "Split up any kind of Pinyin into an array of syllables.",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -12,6 +12,12 @@
     "type": "git",
     "url": "https://github.com/pepebecker/pinyin-split.git"
   },
+  "keywords": [
+    "pinyin",
+    "split",
+    "chinese",
+    "mandarin"
+  ],
   "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
   "license": "ISC",
   "bugs": {
