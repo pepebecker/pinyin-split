@@ -1,5 +1,6 @@
 # Pinyin Split
 
+[![npm version](https://img.shields.io/npm/v/pinyin-split.svg)](https://www.npmjs.com/package/pinyin-split)
 [![Travis Build Status](https://travis-ci.org/pepebecker/pinyin-split.svg)](https://travis-ci.org/pepebecker/pinyin-split)
 [![Coverage Status](https://coveralls.io/repos/github/pepebecker/pinyin-split/badge.svg)](https://coveralls.io/github/pepebecker/pinyin-split)
 [![dependency status](https://img.shields.io/david/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split)
