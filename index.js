@@ -32,8 +32,10 @@ const inDoNotMatch = (index, word) => {
   return false
 }
 
+const reAllowed = /^[a-züāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]+$/i
+
 const matchWords = (text, keepSpaces, rc, debug) => {
-  if (debug ) {
+  if (debug) {
 		console.log(`DEBUG> Recursion count: '${recursionCount}'`)
 		console.log(`DEBUG> do not match: '${doNotMatch.map((item) => item.index + ':' + item.word).join()}'`)
 	}
@@ -44,7 +46,7 @@ const matchWords = (text, keepSpaces, rc, debug) => {
   while (i < text.length) {
     let wordFound = false
 
-    if (text[i] === ' ' || text[i] === '\t' || text[i] === '\n' || text[i] === '\r') {
+    if (!reAllowed.test(text[i])) {
 			if (keepSpaces) words.push({index: i, word: text[i]})
       i ++
       wordFound = true
@@ -89,7 +91,7 @@ const matchWords = (text, keepSpaces, rc, debug) => {
         if (debug) console.log(`DEBUG> Max recursion count exceeded`)
         return null
       } else {
-        if (debug) console.log('DEBUG> Error on line 58!')
+        if (debug) console.log('DEBUG> Error on line 94!')
         return null
       }
     }
