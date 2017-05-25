@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/pepebecker/pinyin-split#readme",
   "dependencies": {
-    "pinyin-utils": "https://github.com/pepebecker/pinyin-utils.git"
+    "pinyin-utils": "pepebecker/pinyin-utils"
   },
   "devDependencies": {
     "mocha": "^3.3.0",
