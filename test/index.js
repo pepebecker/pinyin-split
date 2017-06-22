@@ -21,6 +21,24 @@ describe('Split text without spaces', () => {
 			data.should.deepEqual(list)
 		})
 	})
+	it('should split the text into the correct words', () => {
+		return split('derewofendoudouworenwei').then((data) => {
+			const list = ['de', 're', 'wo', 'fen', 'dou', 'dou', 'wo', 'ren', 'wei']
+			data.should.deepEqual(list)
+		})
+	})
+	it('should split the text into the correct words', () => {
+		return split('de2re3wo3fen4dou4dou3wo3ren4wei4').then((data) => {
+			const list = ['de2', 're3', 'wo3', 'fen4', 'dou4', 'dou3', 'wo3', 'ren4', 'wei4']
+			data.should.deepEqual(list)
+		})
+	})
+	it('should split the text into the correct words', () => {
+		return split('dérěwǒfèndòudǒuwǒrènwèi').then((data) => {
+			const list = ['dé', 'rě', 'wǒ', 'fèn', 'dòu', 'dǒu', 'wǒ', 'rèn', 'wèi']
+			data.should.deepEqual(list)
+		})
+	})
 })
 
 describe('Split spaced text without keeping spaces', () => {

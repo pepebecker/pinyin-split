@@ -3,89 +3,117 @@
 const wordsData = require('./words.json')
 const utils = require('pinyin-utils')
 
-let words = []
+let allWords = []
 
 for (let wordList in wordsData) {
-	words = words.concat(wordsData[wordList])
+	allWords = allWords.concat(wordsData[wordList])
 }
 
 // Add all four tones
 for (var i = 1; i <= 4; i++) {
-	words = words.concat(words.map((word) => utils.numberToMark(word + i)))
+	allWords = allWords.concat(allWords.map((word) => utils.numberToMark(word + i)))
 }
 
-// Add capitalize words
-words = words.concat(words.map((word) => utils.capitalize(word)))
+// Add capitalized words
+allWords = allWords.concat(allWords.map((word) => utils.capitalize(word)))
 
 // Sort them by having the longest ones on the top
-words = words.sort((a, b) => b.length - a.length)
+allWords = allWords.sort((a, b) => b.length - a.length)
 
 let doNotMatch = []
-
 let recursionCount = 0
 
-const trySplit = (text, keepSpaces, r, debug) => {
-	if (debug ) {
+const inDoNotMatch = (index, word) => {
+  for (let item of doNotMatch) {
+    if (item.index === index && item.word === word) {
+      return true
+    }
+  }
+  return false
+}
+
+const matchWords = (text, keepSpaces, rc, debug) => {
+  if (debug ) {
 		console.log(`DEBUG> Recursion count: '${recursionCount}'`)
-		console.log(`DEBUG> do not match: '${doNotMatch}'`)
-	}
-	let matchedWords = []
-	let index = 0
-	for (let word of words) {
-		const re = new RegExp(word + '[1-4]*', 'g')
-		let match = undefined
-		while (match = re.exec(text)) {
-			if (utils.contains(doNotMatch, match)) {
-				continue
-			}
-			const id = '$@' + utils.pad(index, 10)
-			matchedWords.push({value: match, id: id})
-			text = text.replace(match, id)
-			index ++
-		}
+		console.log(`DEBUG> do not match: '${doNotMatch.map((item) => item.index + ':' + item.word).join()}'`)
 	}
 
-	for (let word of matchedWords) {
-		text = text.replace(word.id, word.value + ',')
-	}
+  let words = []
+  let i = 0
 
-	let result = text.replace(/ /g, '').split(',')
-	result.splice(-1, 1)
+  while (i < text.length) {
+    let wordFound = false
 
-	if (keepSpaces) {
-		result = text.replace(/ /g, ' ,').split(',')
-		result.splice(-1, 1)
-	}
+    if (text[i] === ' ' || text[i] === '\t' || text[i] === '\n' || text[i] === '\r') {
+			if (keepSpaces) words.push({index: i, word: text[i]})
+      i ++
+      wordFound = true
+    }
 
-	if (r > 0) {
-		for (let i in result) {
-			if (result[i] !== ' ' && !utils.contains(words, result[i])) {
-				if (debug) {
-					recursionCount ++
-					console.log(`DEBUG> '${result[i]}' is not a known Chinese word!`)
-				}
-				doNotMatch.push(result[i-1])
-				return trySplit(result.join(''), keepSpaces, r - 1, debug)
-			}
-		}
-		if (debug) console.log(`DEBUG> Text was sucessfully splitted`)
-	} else {
-		if (debug) console.log(`DEBUG> Max recursion count exceeded`)
-	}
+    for (let word of allWords) {
+      if (inDoNotMatch(i, word)) {
+        if (debug) console.log('DEBUG> Skipped:', word)
+        continue
+      }
 
-	return result
+      if (text.substr(i, word.length) === word) {
+        if (debug) console.log('DEBUG> Found word:', word)
+
+        const item = {index: i, word: word}
+        i += word.length
+
+        if (i < text.length) {
+          const tone = text[i]
+          if (/[1-4]/.test(tone)) {
+            if (debug) console.log('DEBUG> Found tone:', tone)
+            item.tone = tone
+            i ++
+          }
+        }
+
+        words.push(item)
+        wordFound = true
+        break
+      }
+    }
+
+    if (!wordFound) {
+      const lastItem = words[words.length - 1]
+      if (lastItem) {
+        doNotMatch.push(lastItem)
+        if (debug) console.log('DEBUG> Adding word to doNotMatch list:', lastItem.word)
+        if (rc > 0) {
+          recursionCount ++
+          return matchWords(text, --rc, debug)
+        }
+        if (debug) console.log(`DEBUG> Max recursion count exceeded`)
+        return null
+      } else {
+        if (debug) console.log('DEBUG> Error on line 58!')
+        return null
+      }
+    }
+  }
+
+  if (debug) console.log(`DEBUG> Text was sucessfully splitted`)
+  return words
 }
 
 const split = (text, options = {}) => new Promise((yay, nay) => {
+  doNotMatch = []
+
 	const keepSpaces = options.keepSpaces || false
 	const maxRecursion = options.maxRecursion || 5
 	const debug = options.debug || false
 
-	recursionCount = 0
-	
-	let matchedWords = trySplit(text, keepSpaces, maxRecursion, debug)
+  let words = matchWords(text, keepSpaces, maxRecursion, debug)
 
-	yay(matchedWords)
+  if (words) {
+    words = words.map((item) => item.word + (item.tone?item.tone:''))
+    yay(words)
+  } else {
+    nay('Failed to split words')
+  }
 })
 
 module.exports = split
