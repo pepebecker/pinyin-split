@@ -19,7 +19,7 @@
     "mandarin"
   ],
   "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/pepebecker/pinyin-split/issues"
   },
