@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/pepebecker/pinyin-split#readme",
   "dependencies": {
-    "pinyin-utils": "^1.0.2"
+    "pinyin-utils": "^1.0.3"
   },
   "devDependencies": {
     "coveralls": "^2.13.1",
