@@ -1,6 +1,6 @@
 {
   "name": "pinyin-split",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Split up any kind of Pinyin into an array of syllables.",
   "main": "index.js",
   "scripts": {
