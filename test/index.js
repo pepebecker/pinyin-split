@@ -70,14 +70,14 @@ describe('Split spaced text and keep spaces', () => {
 		})
 	})
 	it('should split the text into the correct words', () => {
-		return split('wo3 de mao1 xi3huan1 he2 niu3nai3', {keepSpaces: true}).then((data) => {
-			const list = ['wo3', ' ', 'de', ' ', 'mao1', ' ', 'xi3', 'huan1', ' ', 'he2', ' ', 'niu3', 'nai3']
+		return split('wo3 de mao1 xi3huan he2 niu3nai3', {keepSpaces: true}).then((data) => {
+			const list = ['wo3', ' ', 'de', ' ', 'mao1', ' ', 'xi3', 'huan', ' ', 'he2', ' ', 'niu3', 'nai3']
 			data.should.deepEqual(list)
 		})
 	})
 	it('should split the text into the correct words', () => {
-		return split('wǒ de māo xǐhuān hé niǔnǎi', {keepSpaces: true}).then((data) => {
-			const list = ['wǒ', ' ', 'de', ' ', 'māo', ' ', 'xǐ', 'huān', ' ', 'hé', ' ', 'niǔ', 'nǎi']
+		return split('wǒ de māo xǐhuan hé niǔnǎi', {keepSpaces: true}).then((data) => {
+			const list = ['wǒ', ' ', 'de', ' ', 'māo', ' ', 'xǐ', 'huan', ' ', 'hé', ' ', 'niǔ', 'nǎi']
 			data.should.deepEqual(list)
 		})
 	})

@@ -2,35 +2,35 @@
   "name": "pinyin-split",
   "version": "1.0.5",
   "description": "Split up any kind of Pinyin into an array of syllables.",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha",
-    "cover": "istanbul cover _mocha",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+  "keywords": [
+    "chinese",
+    "mandarin",
+    "pinyin",
+    "split"
+  ],
+  "homepage": "https://github.com/pepebecker/pinyin-split#readme",
+  "bugs": {
+    "url": "https://github.com/pepebecker/pinyin-split/issues"
   },
+  "license": "MIT",
+  "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pepebecker/pinyin-split.git"
   },
-  "keywords": [
-    "pinyin",
-    "split",
-    "chinese",
-    "mandarin"
-  ],
-  "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pepebecker/pinyin-split/issues"
+  "scripts": {
+    "cover": "istanbul cover _mocha",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test": "mocha"
   },
-  "homepage": "https://github.com/pepebecker/pinyin-split#readme",
   "dependencies": {
-    "pinyin-utils": "^1.0.3"
+    "pinyin-utils": "^1.0.7"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
     "istanbul": "^0.4.5",
-    "mocha": "^5.0.0",
+    "mocha": "^5.0.1",
     "mocha-lcov-reporter": "^1.3.0",
     "should": "^13.2.1"
   }
