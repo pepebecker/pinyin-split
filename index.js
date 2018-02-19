@@ -66,7 +66,7 @@ const matchWords = (text, keepSpaces, rc, debug) => {
 
         if (i < text.length) {
           const tone = text[i]
-          if (/[1-4]/.test(tone)) {
+          if (/[1-5]/.test(tone)) {
             if (debug) console.log('DEBUG> Found tone:', tone)
             item.tone = tone
             i ++
