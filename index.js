@@ -13,7 +13,7 @@ for (let i = 0; i < wordsCount; i++) {
   }
 }
 
-const split = (text, opts = {}) => {
+const split = (text, everything) => {
   const list = []
   let wordEnd = text.length
   while (wordEnd > 0) {
@@ -23,13 +23,13 @@ const split = (text, opts = {}) => {
       const word = text.substring(wordEnd - count, wordEnd)
       if (allWords.includes(word.toLowerCase())) {
         wordFound = true
-        list.push(opts.onlyPinyin ? word : [word])
+        list.push(everything ? [word] : word)
         wordEnd -= (count - 1)
         break
       }
       count--
     }
-    if (!wordFound && !opts.onlyPinyin) {
+    if (!wordFound && everything) {
       if (wordEnd === text.length || typeof list[list.length - 1] === 'object') {
         list.push(text[wordEnd - 1])
       }

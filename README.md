@@ -2,7 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/pinyin-split.svg)](https://www.npmjs.com/package/pinyin-split)
 [![Travis Build Status](https://travis-ci.org/pepebecker/pinyin-split.svg)](https://travis-ci.org/pepebecker/pinyin-split)
-[![Coverage Status](https://coveralls.io/repos/github/pepebecker/pinyin-split/badge.svg)](https://coveralls.io/github/pepebecker/pinyin-split)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pepebecker/pinyin-split.svg)](https://greenkeeper.io/)
 [![dependency status](https://img.shields.io/david/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split)
 [![dev dependency status](https://img.shields.io/david/dev/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split#info=devDependencies)
@@ -20,17 +19,15 @@ npm install pinyin-split
 ```js
 const split = require('pinyin-split')
 
-split('wodemaoxihuanheniunai')
-.then(console.log) // ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
-.catch(console.error)
+console.log(split('本：wodemaoxihuanheniunai！'))
+// ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
 
-split('wo de mao xihuan he niunai')
-.then(console.log) // ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
-.catch(console.error)
+console.log(split('本：wo de mao xihuan he niunai！'))
+// ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
 
-split('ni jiao shenme mingzi', {keepSpaces: true})
-.then(console.log) // ['ni', ' ', 'jiao', ' ', 'shen', 'me', ' ', 'ming', 'zi']
-.catch(console.error)
+// return everything and wrap pinyin into lists
+console.log(split('本：ni jiao shenme mingzi？', true))
+// ['本：'['ni'], ' ', ['jiao'], ' ', ['shen'], ['me'], ' ', ['ming'], ['zi'], '？']
 ```
 
 ## Related
