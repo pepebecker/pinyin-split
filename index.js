@@ -19,7 +19,7 @@ const split = (text, everything) => {
   while (wordEnd > 0) {
     let count = wordEnd
     let wordFound = false
-    while (count > 1) {
+    while (count > 0) {
       const word = text.substring(wordEnd - count, wordEnd)
       if (allWords.includes(word.toLowerCase())) {
         wordFound = true
