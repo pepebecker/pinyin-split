@@ -73,13 +73,24 @@ describe('Split spaced text and keep spaces', () => {
 
 describe('Split spaced and punctuated text and keep spaces as well as punctuation', () => {
 	it('should split the text into the correct words and punctuation', done => {
-		const list = ['Wô',' ','bú',' ','huì',' ','shuō',' ','Yīng','wén','.']
-		split('Wô bú huì shuō Yīngwén.', true).should.deepEqual(list)
+		const list = ['Wǒ',' ','bú',' ','huì',' ','shuō',' ','Yīng','wén','.']
+		split('Wǒ bú huì shuō Yīngwén.', true).should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words and punctuation', done => {
 		const list = ['Wo3',' ','bu2',' ','hui4',' ','shuo1',' ','Ying1','wen2','.']
 		split('Wo3 bu2 hui4 shuo1 Ying1wen2.', true).should.deepEqual(list)
+		done()
+	})
+})
+
+describe('Split text containing English words', () => {
+	it('should split text containing English and Pinyin correctly', done => {
+		const list = [
+            'This is ', [ 'ran' ], 'd', [ 'o' ], 'm ', [ 'te' ], 'xt: "',
+            [ 'wo' ], [ 'de' ], [ 'mao' ], [ 'xi' ], [ 'huan' ], [ 'he' ], [ 'niu' ], [ 'nai' ], '".'
+        ]
+		split('This is random text: "wodemaoxihuanheniunai".', true, true).should.deepEqual(list)
 		done()
 	})
 })

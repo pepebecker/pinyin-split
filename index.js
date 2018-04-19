@@ -6,37 +6,38 @@ const allWords = Object.values(wordsData).reduce((o, i) => o.concat(i), [])
 
 const normalizePinyin = (pinyin) => pinyin.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/(\w)[1-5]/g, '$1').toLowerCase()
 
-const split = (text, everything=false, list=false) => {
-    const words = []
-    let previousString = ''
-    let currentString = ''
-    for (const [i,char] of text.split('').reverse().entries()) {
-        currentString = char + currentString
-        const previousStringNormalized = normalizePinyin(previousString)
-        const currentStringNormalized = normalizePinyin(currentString)
-        const isLastIteration = i+1===text.length
-        const isFirstAndNotLastIteration = text.length>1 && i===0
-        const currentContainsOnlySpecialChars = /^[^\w]+$/.test(currentStringNormalized)
-        const previousContainsOnlySpecialChars = /^[^\w]+$/.test(previousStringNormalized)
-        const currentIsValidWord = allWords.includes(currentStringNormalized)
-        const previousIsValidWord = allWords.includes(previousStringNormalized)
-        const currentMatchCount = allWords.filter(word=>word.includes(currentStringNormalized)).length
-        const previousMatchCount = allWords.filter(word=>word.includes(previousStringNormalized)).length
-        if (!isFirstAndNotLastIteration && ((previousMatchCount >= 1 && currentMatchCount === 0) || isLastIteration || (previousContainsOnlySpecialChars && !currentContainsOnlySpecialChars))) {
-            if (everything || currentIsValidWord || previousIsValidWord) {
-                if (currentIsValidWord || currentContainsOnlySpecialChars) {
-                    words.push(list && currentIsValidWord ? [currentString] : currentString)
-                } else {
-                    words.push(list && previousIsValidWord ? [previousString] : previousString)
-                    if (isFirstAndNotLastIteration)
-                        words.push(char)
-                }
-            }
-            currentString = char
-        }
-        previousString = currentString
+const split = (text, everything=false, returnAsList=false) => {
+  const list = []
+  let wordEnd = text.length
+  while (wordEnd > 0) {
+    let count = wordEnd
+    let wordFound = false
+    while (count > 0) {
+      const word = text.substring(wordEnd - count, wordEnd)
+      if (allWords.includes(normalizePinyin(word))) {
+        wordFound = true
+        list.push(returnAsList ? [word] : word)
+        wordEnd -= (count - 1)
+        break
+      }
+      count--
     }
-    return words.reverse()
+    if (!wordFound && everything) {
+      if (wordEnd === text.length || typeof list[list.length - 1] === 'object' || !returnAsList) {
+        list.push(text[wordEnd - 1])
+      }
+      else if (typeof list[list.length - 1] === 'string') {
+        if (returnAsList) {
+          list[list.length - 1] = text[wordEnd - 1] + list[list.length - 1]
+        } else {
+          list[list.length - 1] = list[list.length - 1]
+          list.splice(list.length - 1, 0, text[wordEnd - 1])
+        }
+      }
+    }
+    wordEnd --
+  }
+  return list.reverse()
 }
 
 module.exports = split
