@@ -6,8 +6,9 @@ const allWords = Object.values(wordsData).reduce((o, i) => o.concat(i), [])
 
 const normalizePinyin = (pinyin) => pinyin.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/(\w)[1-5]/g, '$1').toLowerCase()
 
-const split = (text, everything=false, returnAsList=false) => {
+const split = (text, everything=false, wrapInList=false) => {
   const list = []
+  let prevWordFound = false
   let wordEnd = text.length
   while (wordEnd > 0) {
     let count = wordEnd
@@ -16,26 +17,24 @@ const split = (text, everything=false, returnAsList=false) => {
       const word = text.substring(wordEnd - count, wordEnd)
       if (allWords.includes(normalizePinyin(word))) {
         wordFound = true
-        list.push(returnAsList ? [word] : word)
+        list.push(wrapInList ? [word] : word)
         wordEnd -= (count - 1)
         break
       }
       count--
     }
     if (!wordFound && everything) {
-      if (wordEnd === text.length || typeof list[list.length - 1] === 'object' || !returnAsList) {
+      const prevIndex = list.length - 1
+      const prevEntry = list[prevIndex]
+      if (wordEnd === text.length || typeof prevEntry === 'object' || prevWordFound) {
         list.push(text[wordEnd - 1])
       }
-      else if (typeof list[list.length - 1] === 'string') {
-        if (returnAsList) {
-          list[list.length - 1] = text[wordEnd - 1] + list[list.length - 1]
-        } else {
-          list[list.length - 1] = list[list.length - 1]
-          list.splice(list.length - 1, 0, text[wordEnd - 1])
-        }
+      else if (typeof prevEntry === 'string') {
+        list[prevIndex] = text[wordEnd - 1] + prevEntry
       }
     }
     wordEnd --
+    prevWordFound = wordFound
   }
   return list.reverse()
 }
