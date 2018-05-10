@@ -11,7 +11,7 @@
 	"en": ["en", "ben", "pen", "men", "fen", "den", "nen", "gen", "ken", "hen", "zhen", "chen", "shen", "ren", "zen", "cen", "sen"],
 	"ang": ["ang", "bang", "pang", "mang", "fang", "dang", "tang", "nang", "lang", "gang", "kang", "hang", "zhang", "chang", "shang", "rang", "zang", "cang", "sang"],
 	"eng": ["eng", "beng", "peng", "meng", "feng", "deng", "teng", "neng", "leng", "geng", "keng", "heng", "zheng", "cheng", "sheng", "reng", "zeng", "ceng", "seng"],
-	"er": ["er"],
+	"er": ["er", "r"],
 	"ia": ["ya", "dia", "nia", "lia", "jia", "qia", "xia"],
 	"io": ["yo"],
 	"ie": ["ye", "bie", "pie", "mie", "die", "tie", "nie", "lie", "jie", "qie", "xie"],
