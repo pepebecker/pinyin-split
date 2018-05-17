@@ -1,8 +1,6 @@
 'use strict'
 
-const wordsData = require('./words.json')
-
-const allWords = Object.values(wordsData).reduce((o, i) => o.concat(i), [])
+const syllables = require('./syllables.json')
 
 const normalizePinyin = (pinyin) => pinyin.normalize('NFD').replace(/\u0304|\u0301|\u030c|\u0300/g, '').replace(/(\w)[1-5]/g, '$1').toLowerCase()
 
@@ -15,7 +13,7 @@ const split = (text, everything=false, wrapInList=false) => {
     let wordFound = false
     while (count > 0) {
       const word = text.substring(wordEnd - count, wordEnd)
-      if (allWords.includes(normalizePinyin(word))) {
+      if (syllables.includes(normalizePinyin(word))) {
         wordFound = true
         list.push(wrapInList ? [word] : word)
         wordEnd -= (count - 1)
