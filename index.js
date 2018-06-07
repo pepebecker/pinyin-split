@@ -4,7 +4,7 @@ const syllables = require('./syllables.json')
 
 const normalizePinyin = pinyin => {
   pinyin = pinyin.normalize('NFD').replace(/\u0304|\u0301|\u030c|\u0300/g, '')
-  return pinyin.replace(/(\w)[1-5]/g, '$1').normalize('NFC').toLowerCase()
+  return pinyin.normalize('NFC').replace(/(\w|ü)[1-5]/gi, '$1').toLowerCase()
 }
 
 const split = (text, everything=false, wrapInList=false) => {
