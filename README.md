@@ -26,8 +26,12 @@ console.log(split('本：wo de mao xihuan he niunai！'))
 // ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
 
 // return everything and wrap pinyin into lists
-console.log(split('本：ni jiao shenme mingzi？', true))
+console.log(split('本：ni jiao shenme mingzi？', true, true))
 // ['本：'['ni'], ' ', ['jiao'], ' ', ['shen'], ['me'], ' ', ['ming'], ['zi'], '？']
+
+// return everything and don't wrap pinyin into lists
+console.log(split('Nǐ huì shuō Yīngwén ma?', true))
+// ['Nǐ', ' ', 'huì', ' ', 'shuō', ' ', 'Yīng', 'wén', ' ', 'ma', '?']
 ```
 
 ## Related
