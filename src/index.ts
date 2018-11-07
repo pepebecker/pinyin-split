@@ -2,7 +2,7 @@
 
 import syllables from './syllables'
 
-const normalizePinyin = (pinyin: string): string => pinyin.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/(\w)[1-5]/g, '$1').toLowerCase()
+const normalizePinyin = (pinyin: string): string => pinyin.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC').replace(/(\w)[1-5]/g, '$1').toLowerCase()
 
 /**
  * Split Pinyin and return array of Pinyin syllables
