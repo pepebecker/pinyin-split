@@ -1,23 +1,25 @@
 'use strict'
 
-const split = require('../index')
+import 'should'
+
+import split from '..'
 
 // Test case for split(string, false, false)
 
 describe('Split text with non-spaced Pinyin and return Pinyin only', () => {
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
-		split('I am 本 and this is Pinyin: "wodemaoxihuanheniunai".').should.deepEqual(list)
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo', 'de', 'mao', 'xi', 'huan', 'he', 'lü', 'se', 'de', 'cha']
+		split('I am 本 and this is Pinyin: "wodemaoxihuanhelüsedecha".').should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'niu2', 'nai3']
-		split('I am 本 and this is Pinyin: "wo3demao1xi3huanhe1niu2nai3".').should.deepEqual(list)
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'lü4', 'se4', 'de', 'cha2']
+		split('I am 本 and this is Pinyin: "wo3demao1xi3huanhe1lü4se4decha2".').should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'niú', 'nǎi']
-		split('I am 本 and this is Pinyin: "wǒdemāoxǐhuanhēniúnǎi".').should.deepEqual(list)
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'lǜ', 'sè', 'de', 'chá']
+		split('I am 本 and this is Pinyin: "wǒdemāoxǐhuanhēlǜsèdechá".').should.deepEqual(list)
 		done()
 	})
 })

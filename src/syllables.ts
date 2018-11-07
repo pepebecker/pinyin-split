@@ -1,4 +1,4 @@
-[
+const syllables: string[] = [
 	"a",
 	"ai",
 	"an",
@@ -413,3 +413,5 @@
 	"zuo",
 	"zu"
 ]
+
+export = syllables
