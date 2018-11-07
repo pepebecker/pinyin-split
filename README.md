@@ -19,11 +19,17 @@ npm install pinyin-split
 ```js
 const split = require('pinyin-split')
 
-console.log(split('本：wodemaoxihuanheniunai！'))
-// ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
+console.log(split('本: "wǒshìzhōngguórén".'))
+// ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
 
-console.log(split('本：wo de mao xihuan he niunai！'))
-// ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
+console.log(split('本: "wǒshìzhōngguórén".', true))
+// ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
+
+console.log(split('本: "wǒshìzhōngguórén".', false, true))
+// [['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén']]
+
+console.log(split('本: "wǒshìzhōngguórén".', true, true))
+// ['本: "', ['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén'], '"."]
 
 // return everything and wrap pinyin into lists
 console.log(split('本：ni jiao shenme mingzi？', true, true))
