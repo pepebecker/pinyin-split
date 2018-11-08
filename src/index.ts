@@ -10,16 +10,9 @@ const normalizePinyin = (pinyin: string): string => pinyin.normalize('NFD').repl
  * @example split('本: "wǒshìzhōngguórén".')
  * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
  */
-function split(str: string): string[]
-
-/**
- * Split Pinyin and return array of Pinyin syllables
- * @param str String to split into Pinyin syllables.
- * @param everything Flag to specify if everything or only Pinyin should be returned.
- * @example split('本: "wǒshìzhōngguórén".', false)
- * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
- */
-function split(str: string, everything: false): string[]
+// function split(str: string): string[]
+// function split(str: string, everything?: false): string[]
+function split(str: string, everything?: false, wrapInList?: false): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -28,17 +21,7 @@ function split(str: string, everything: false): string[]
  * @example split('本: "wǒshìzhōngguórén".', true)
  * ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
  */
-function split(str: string, everything: true): string[]
-
-/**
- * Split Pinyin and return array of Pinyin syllables
- * @param str String to split into Pinyin syllables.
- * @param everything Return everything or only Pinyin.
- * @param wrapInList Wrap Pinyin into list to differentiate from non Pinyin text
- * @example split('本: "wǒshìzhōngguórén".', false, false)
- * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
- */
-function split(str: string, everything: false, wrapInList: false): string[]
+function split(str: string, everything: true, wrapInList?: false): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -49,16 +32,6 @@ function split(str: string, everything: false, wrapInList: false): string[]
  * [['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén']]
  */
 function split(str: string, everything: false, wrapInList: true): string[][]
-
-/**
- * Split Pinyin and return array of Pinyin syllables
- * @param str String to split into Pinyin syllables.
- * @param everything Return everything or only Pinyin.
- * @param wrapInList Wrap Pinyin into list to differentiate from non Pinyin text
- * @example split('本: "wǒshìzhōngguórén".', true, false)
- * ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
- */
-function split(str: string, everything: true, wrapInList: false): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
