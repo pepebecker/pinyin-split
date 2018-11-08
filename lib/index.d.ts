@@ -12,7 +12,7 @@ declare function split(str: string): string[];
  * @example split('本: "wǒshìzhōngguórén".', false)
  * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
  */
-declare function split(str: string, everything?: false): string[];
+declare function split(str: string, everything: false): string[];
 /**
  * Split Pinyin and return array of Pinyin syllables
  * @param str String to split into Pinyin syllables.
@@ -20,7 +20,7 @@ declare function split(str: string, everything?: false): string[];
  * @example split('本: "wǒshìzhōngguórén".', true)
  * ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
  */
-declare function split(str: string, everything?: true): string[];
+declare function split(str: string, everything: true): string[];
 /**
  * Split Pinyin and return array of Pinyin syllables
  * @param str String to split into Pinyin syllables.
@@ -29,7 +29,7 @@ declare function split(str: string, everything?: true): string[];
  * @example split('本: "wǒshìzhōngguórén".', false, false)
  * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
  */
-declare function split(str: string, everything?: false, wrapInList?: false): string[];
+declare function split(str: string, everything: false, wrapInList: false): string[];
 /**
  * Split Pinyin and return array of Pinyin syllables
  * @param str String to split into Pinyin syllables.
@@ -38,7 +38,7 @@ declare function split(str: string, everything?: false, wrapInList?: false): str
  * @example split('本: "wǒshìzhōngguórén".', false, true)
  * [['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén']]
  */
-declare function split(str: string, everything?: false, wrapInList?: true): string[][];
+declare function split(str: string, everything: false, wrapInList: true): string[][];
 /**
  * Split Pinyin and return array of Pinyin syllables
  * @param str String to split into Pinyin syllables.
@@ -47,7 +47,7 @@ declare function split(str: string, everything?: false, wrapInList?: true): stri
  * @example split('本: "wǒshìzhōngguórén".', true, false)
  * ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
  */
-declare function split(str: string, everything?: true, wrapInList?: false): string[];
+declare function split(str: string, everything: true, wrapInList: false): string[];
 /**
  * Split Pinyin and return array of Pinyin syllables
  * @param str String to split into Pinyin syllables.
@@ -56,5 +56,5 @@ declare function split(str: string, everything?: true, wrapInList?: false): stri
  * @example split('本: "wǒshìzhōngguórén".', true, true)
  * ['本: "', ['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén'], '"."]
  */
-declare function split(str: string, everything?: true, wrapInList?: true): (string | string[])[];
+declare function split(str: string, everything: true, wrapInList: true): (string | string[])[];
 export = split;

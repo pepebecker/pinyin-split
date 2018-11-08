@@ -19,7 +19,7 @@ function split(str: string): string[]
  * @example split('本: "wǒshìzhōngguórén".', false)
  * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
  */
-function split(str: string, everything?: false): string[]
+function split(str: string, everything: false): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -28,7 +28,7 @@ function split(str: string, everything?: false): string[]
  * @example split('本: "wǒshìzhōngguórén".', true)
  * ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
  */
-function split(str: string, everything?: true): string[]
+function split(str: string, everything: true): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -38,7 +38,7 @@ function split(str: string, everything?: true): string[]
  * @example split('本: "wǒshìzhōngguórén".', false, false)
  * ['wǒ', 'shì', 'zhōng', 'guó', 'rén']
  */
-function split(str: string, everything?: false, wrapInList?: false): string[]
+function split(str: string, everything: false, wrapInList: false): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -48,7 +48,7 @@ function split(str: string, everything?: false, wrapInList?: false): string[]
  * @example split('本: "wǒshìzhōngguórén".', false, true)
  * [['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén']]
  */
-function split(str: string, everything?: false, wrapInList?: true): string[][]
+function split(str: string, everything: false, wrapInList: true): string[][]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -58,7 +58,7 @@ function split(str: string, everything?: false, wrapInList?: true): string[][]
  * @example split('本: "wǒshìzhōngguórén".', true, false)
  * ['本: "', 'wǒ', 'shì', 'zhōng', 'guó', 'rén', '"."]
  */
-function split(str: string, everything?: true, wrapInList?: false): string[]
+function split(str: string, everything: true, wrapInList: false): string[]
 
 /**
  * Split Pinyin and return array of Pinyin syllables
@@ -68,7 +68,7 @@ function split(str: string, everything?: true, wrapInList?: false): string[]
  * @example split('本: "wǒshìzhōngguórén".', true, true)
  * ['本: "', ['wǒ'], ['shì'], ['zhōng'], ['guó'], ['rén'], '"."]
  */
-function split(str: string, everything?: true, wrapInList?: true): (string | string[])[]
+function split(str: string, everything: true, wrapInList: true): (string | string[])[]
 
 function split(str: string, everything?: boolean, wrapInList?: boolean) {
   const list = []
