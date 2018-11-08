@@ -14,6 +14,12 @@
 npm install pinyin-split
 ```
 
+## Syntax
+
+```ts
+split(str: string, everything?: boolean, wrapInList?: boolean)
+```
+
 ## Usage
 
 ```js
