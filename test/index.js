@@ -6,17 +6,17 @@ const split = require('../index')
 
 describe('Split text with non-spaced Pinyin and return Pinyin only', () => {
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'an', 'Pin', 'yin', 'wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
 		split('I am 本 and this is Pinyin: "wodemaoxihuanheniunai".').should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'an', 'Pin', 'yin', 'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'niu2', 'nai3']
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'niu2', 'nai3']
 		split('I am 本 and this is Pinyin: "wo3demao1xi3huanhe1niu2nai3".').should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'an', 'Pin', 'yin', 'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'niú', 'nǎi']
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'niú', 'nǎi']
 		split('I am 本 and this is Pinyin: "wǒdemāoxǐhuanhēniúnǎi".').should.deepEqual(list)
 		done()
 	})
@@ -24,17 +24,17 @@ describe('Split text with non-spaced Pinyin and return Pinyin only', () => {
 
 describe('Split text with spaced Pinyin and return Pinyin only', () => {
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'an', 'Pin', 'yin', 'wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
 		split('I am 本 and this is Pinyin: "wo de mao xihuan he niunai".').should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'an', 'Pin', 'yin', 'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'niu2', 'nai3']
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'niu2', 'nai3']
 		split('I am 本 and this is Pinyin: "wo3 de mao1 xi3huan he1 niu2nai3".').should.deepEqual(list)
 		done()
 	})
 	it('should split the text into the correct words', done => {
-		const list = ['a', 'an', 'Pin', 'yin', 'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'niú', 'nǎi']
+		const list = ['a', 'm', 'an', 'Pin', 'yin', 'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'niú', 'nǎi']
 		split('I am 本 and this is Pinyin: "wǒ de māo xǐhuan hē niúnǎi".').should.deepEqual(list)
 		done()
 	})
@@ -45,7 +45,7 @@ describe('Split text with spaced Pinyin and return Pinyin only', () => {
 describe('Split text with non-spaced Pinyin and return everything', () => {
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', 'a', 'm 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
+			'I ', 'a', 'm', ' 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
 			'wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai', '".'
 		]
 		split('I am 本 and this is Pinyin: "wodemaoxihuanheniunai".', true).should.deepEqual(list)
@@ -53,7 +53,7 @@ describe('Split text with non-spaced Pinyin and return everything', () => {
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', 'a', 'm 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
+			'I ', 'a', 'm', ' 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
 			'wo3', 'de', 'mao1', 'xi3', 'huan', 'he1', 'niu2', 'nai3', '".'
 		]
 		split('I am 本 and this is Pinyin: "wo3demao1xi3huanhe1niu2nai3".', true).should.deepEqual(list)
@@ -61,7 +61,7 @@ describe('Split text with non-spaced Pinyin and return everything', () => {
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', 'a', 'm 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
+			'I ', 'a', 'm', ' 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
 			'wǒ', 'de', 'māo', 'xǐ', 'huan', 'hē', 'niú', 'nǎi', '".'
 		]
 		split('I am 本 and this is Pinyin: "wǒdemāoxǐhuanhēniúnǎi".', true).should.deepEqual(list)
@@ -72,7 +72,7 @@ describe('Split text with non-spaced Pinyin and return everything', () => {
 describe('Split text with spaced Pinyin and return everything', () => {
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', 'a', 'm 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
+			'I ', 'a', 'm', ' 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
 			'wo', ' ', 'de', ' ', 'mao', ' ', 'xi', 'huan', ' ', 'he', ' ', 'niu', 'nai', '".'
 		]
 		split('I am 本 and this is Pinyin: "wo de mao xihuan he niunai".', true).should.deepEqual(list)
@@ -80,7 +80,7 @@ describe('Split text with spaced Pinyin and return everything', () => {
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', 'a', 'm 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
+			'I ', 'a', 'm', ' 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
 			'wo3', ' ', 'de', ' ', 'mao1', ' ', 'xi3', 'huan', ' ', 'he1', ' ', 'niu2', 'nai3', '".'
 		]
 		split('I am 本 and this is Pinyin: "wo3 de mao1 xi3huan he1 niu2nai3".', true).should.deepEqual(list)
@@ -88,7 +88,7 @@ describe('Split text with spaced Pinyin and return everything', () => {
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', 'a', 'm 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
+			'I ', 'a', 'm', ' 本 ', 'an', 'd this is ', 'Pin', 'yin', ': "',
 			'wǒ', ' ', 'de', ' ', 'māo', ' ', 'xǐ', 'huan', ' ', 'hē', ' ', 'niú', 'nǎi', '".'
 		]
 		split('I am 本 and this is Pinyin: "wǒ de māo xǐhuan hē niúnǎi".', true).should.deepEqual(list)
@@ -101,7 +101,7 @@ describe('Split text with spaced Pinyin and return everything', () => {
 describe('Split text with non-spaced Pinyin and return everything with Pinyin wrapped in lists', () => {
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', ['a'], 'm 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
+			'I ', ['a'], ['m'], ' 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
 			['wo'], ['de'], ['mao'], ['xi'], ['huan'], ['he'], ['niu'], ['nai'], '".'
 		]
 		split('I am 本 and this is Pinyin: "wodemaoxihuanheniunai".', true, true).should.deepEqual(list)
@@ -109,7 +109,7 @@ describe('Split text with non-spaced Pinyin and return everything with Pinyin wr
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', ['a'], 'm 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
+			'I ', ['a'], ['m'], ' 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
 			['wo3'], ['de'], ['mao1'], ['xi3'], ['huan'], ['he1'], ['niu2'], ['nai3'], '".'
 		]
 		split('I am 本 and this is Pinyin: "wo3demao1xi3huanhe1niu2nai3".', true, true).should.deepEqual(list)
@@ -117,7 +117,7 @@ describe('Split text with non-spaced Pinyin and return everything with Pinyin wr
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', ['a'], 'm 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
+			'I ', ['a'], ['m'], ' 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
 			['wǒ'], ['de'], ['māo'], ['xǐ'], ['huan'], ['hē'], ['niú'], ['nǎi'], '".'
 		]
 		split('I am 本 and this is Pinyin: "wǒdemāoxǐhuanhēniúnǎi".', true, true).should.deepEqual(list)
@@ -128,7 +128,7 @@ describe('Split text with non-spaced Pinyin and return everything with Pinyin wr
 describe('Split text with spaced Pinyin and return everything with Pinyin wrapped in lists', () => {
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', ['a'], 'm 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
+			'I ', ['a'], ['m'], ' 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
 			['wo'], ' ', ['de'], ' ', ['mao'], ' ', ['xi'], ['huan'], ' ', ['he'], ' ', ['niu'], ['nai'], '".'
 		]
 		split('I am 本 and this is Pinyin: "wo de mao xihuan he niunai".', true, true).should.deepEqual(list)
@@ -136,7 +136,7 @@ describe('Split text with spaced Pinyin and return everything with Pinyin wrappe
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', ['a'], 'm 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
+			'I ', ['a'], ['m'], ' 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
 			['wo3'], ' ', ['de'], ' ', ['mao1'], ' ', ['xi3'], ['huan'], ' ', ['he1'], ' ', ['niu2'], ['nai3'], '".'
 		]
 		split('I am 本 and this is Pinyin: "wo3 de mao1 xi3huan he1 niu2nai3".', true, true).should.deepEqual(list)
@@ -144,7 +144,7 @@ describe('Split text with spaced Pinyin and return everything with Pinyin wrappe
 	})
 	it('should split the text into the correct words', done => {
 		const list = [
-			'I ', ['a'], 'm 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
+			'I ', ['a'], ['m'], ' 本 ', ['an'], 'd this is ', ['Pin'], ['yin'], ': "',
 			['wǒ'], ' ', ['de'], ' ', ['māo'], ' ', ['xǐ'], ['huan'], ' ', ['hē'], ' ', ['niú'], ['nǎi'], '".'
 		]
 		split('I am 本 and this is Pinyin: "wǒ de māo xǐhuan hē niúnǎi".', true, true).should.deepEqual(list)
