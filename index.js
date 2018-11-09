@@ -4,7 +4,7 @@ const wordsData = require('./words.json')
 
 const allWords = Object.values(wordsData).reduce((o, i) => o.concat(i), [])
 
-const normalizePinyin = (pinyin) => pinyin.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/(\w)[1-5]/g, '$1').toLowerCase()
+const normalizePinyin = (pinyin) => pinyin.normalize('NFD').replace(/\u0304|\u0301|\u030c|\u0300/g, '').replace(/(\w)[1-5]/g, '$1').toLowerCase()
 
 const split = (text, everything=false, wrapInList=false) => {
   const list = []
