@@ -1,7 +1,7 @@
 import 'mocha'
 import { expect } from 'chai'
 
-import { split } from '../src/index'
+import split from '../src/index'
 
 // Test case for split(string, false, false)
 
