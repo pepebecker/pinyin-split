@@ -1,14 +1,14 @@
-'use strict'
+import syllables from './syllables'
 
-const syllables = require('./syllables.json')
-
-const normalizePinyin = pinyin => {
-  pinyin = pinyin.normalize('NFD').replace(/\u0304|\u0301|\u030c|\u0300/g, '')
-  return pinyin.normalize('NFC').replace(/(\w|ü)[1-5]/gi, '$1').toLowerCase()
+const normalize = (text: string) => {
+  text = text.normalize('NFD').replace(/\u0304|\u0301|\u030c|\u0300/g, '')
+  return text.normalize('NFC').replace(/(\w|ü)[1-5]/gi, '$1').toLowerCase()
 }
 
-const split = (text, everything=false, wrapInList=false) => {
-  const list = []
+export function split(text: string, everything?: boolean): string[]
+export function split(text: string, everything?: boolean, wrapInList?: true): (string[]|string)[]
+export function split(text: string, everything=false, wrapInList=false) {
+  const list = Array<string | string[]>()
   let prevWordFound = false
   let wordEnd = text.length
   while (wordEnd > 0) {
@@ -16,7 +16,7 @@ const split = (text, everything=false, wrapInList=false) => {
     let wordFound = false
     while (count > 0) {
       const word = text.substring(wordEnd - count, wordEnd)
-      if (syllables.includes(normalizePinyin(word))) {
+      if (syllables.includes(normalize(word))) {
         wordFound = true
         list.push(wrapInList ? [word] : word)
         wordEnd -= (count - 1)
@@ -39,5 +39,3 @@ const split = (text, everything=false, wrapInList=false) => {
   }
   return list.reverse()
 }
-
-module.exports = split
