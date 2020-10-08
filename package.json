@@ -16,7 +16,7 @@
     "type": "git",
     "url": "https://github.com/pepebecker/pinyin-split.git"
   },
-  "license": "MIT",
+  "license": "ISC",
   "author": "Pepe Becker <mail@pepebecker.com> (http://pepebecker.com)",
   "main": "index.js",
   "scripts": {
