@@ -15,7 +15,7 @@ npm install pinyin-split
 ## Usage
 
 ```js
-const split = require('pinyin-split')
+import { split } from 'pinyin-split'
 
 console.log(split('本：wodemaoxihuanheniunai！'))
 // ['wo', 'de', 'mao', 'xi', 'huan', 'he', 'niu', 'nai']
