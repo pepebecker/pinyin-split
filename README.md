@@ -2,11 +2,9 @@
 
 [![npm version](https://img.shields.io/npm/v/pinyin-split.svg)](https://www.npmjs.com/package/pinyin-split)
 [![Travis Build Status](https://travis-ci.org/pepebecker/pinyin-split.svg)](https://travis-ci.org/pepebecker/pinyin-split)
-[![Greenkeeper badge](https://badges.greenkeeper.io/pepebecker/pinyin-split.svg)](https://greenkeeper.io/)
 [![dependency status](https://img.shields.io/david/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split)
 [![dev dependency status](https://img.shields.io/david/dev/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split#info=devDependencies)
 [![MIT-licensed](https://img.shields.io/github/license/pepebecker/pinyin-split.svg)](https://opensource.org/licenses/MIT)
-[![chat on gitter](https://badges.gitter.im/pepebecker.svg)](https://gitter.im/pepebecker)
 
 ## Install
 
