@@ -5,8 +5,26 @@ const normalize = (text: string) => {
   return text.normalize('NFC').replace(/(\w|ü)[1-5]/gi, '$1').toLowerCase()
 }
 
-export function split(text: string, everything?: boolean): string[]
-export function split(text: string, everything?: boolean, wrapInList?: true): (string[]|string)[]
+/**
+ *
+ * @param text (non-spaced) text to split into Pinyin syllables
+ */
+export function split(text: string): string[]
+/**
+ *
+ * @param text (non-spaced) text to split into Pinyin syllables
+ * @param everything include non-Pinyin text in result
+ */
+export function split(text: string, everything: boolean): string[]
+/**
+ *
+ * @param text (non-spaced) text to split into Pinyin syllables
+ * @param everything include non-Pinyin text in result
+ * @param wrapInList distinguish Pinyin syllables from non-Pinyin text
+ * by wrapping them into a 1 value array
+ */
+export function split(text: string, everything: boolean, wrapInList: boolean): string[]
+export function split(text: string, everything: boolean, wrapInList: true): (string[]|string)[]
 export function split(text: string, everything=false, wrapInList=false) {
   const list = Array<string | string[]>()
   let prevWordFound = false
