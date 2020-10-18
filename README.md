@@ -4,7 +4,7 @@
 [![Travis Build Status](https://travis-ci.org/pepebecker/pinyin-split.svg)](https://travis-ci.org/pepebecker/pinyin-split)
 [![dependency status](https://img.shields.io/david/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split)
 [![dev dependency status](https://img.shields.io/david/dev/pepebecker/pinyin-split.svg)](https://david-dm.org/pepebecker/pinyin-split#info=devDependencies)
-[![ISC-licensed](https://img.shields.io/github/license/pepebecker/pinyin-split.svg)](https://opensource.org/licenses/ISC)
+[![ISC-licensed](https://img.shields.io/github/license/pepebecker/pinyin-split.svg)](https://choosealicense.com/licenses/isc/)
 
 ## Install
 
