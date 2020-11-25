@@ -9,13 +9,13 @@ const normalize = (text: string) => {
  *
  * @param text (non-spaced) text to split into Pinyin syllables
  */
-function split(text: string): string[]
+export function split(text: string): string[]
 /**
  *
  * @param text (non-spaced) text to split into Pinyin syllables
  * @param everything include non-Pinyin text in result
  */
-function split(text: string, everything: boolean): string[]
+export function split(text: string, everything: boolean): string[]
 /**
  *
  * @param text (non-spaced) text to split into Pinyin syllables
@@ -23,9 +23,9 @@ function split(text: string, everything: boolean): string[]
  * @param wrapInList distinguish Pinyin syllables from non-Pinyin text
  * by wrapping them into a 1 value array
  */
-function split(text: string, everything: boolean, wrapInList: boolean): string[]
-function split(text: string, everything: boolean, wrapInList: true): (string[]|string)[]
-function split(text: string, everything=false, wrapInList=false) {
+export function split(text: string, everything: boolean, wrapInList: boolean): string[]
+export function split(text: string, everything: boolean, wrapInList: true): (string[]|string)[]
+export function split(text: string, everything=false, wrapInList=false) {
   const list = Array<string | string[]>()
   let prevWordFound = false
   let wordEnd = text.length
