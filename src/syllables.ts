@@ -272,6 +272,7 @@ export default [
 	"quan",
 	"que",
 	"qun",
+	"r",
 	"ran",
 	"rang",
 	"rao",
